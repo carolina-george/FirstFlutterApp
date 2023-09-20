@@ -14,16 +14,21 @@ class _SebhaTabState extends State<SebhaTab> {
     setState(() {
       count++;
       if (count >= 30) {
+        word = ["الحمد لله"];
+      }
+      if (count >= 40) {
         word = ["الله اكبر"];
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          Image.asset("assets/images/sebha_image.png"),
+          InkWell(onTap: incrementCount,
+              child: Image.asset("assets/images/sebha_image.png")),
           SizedBox(width: 10, height: 10),
           Text(
             "عدد التسبيحات",
@@ -31,7 +36,7 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
           SizedBox(height: 16),
           ElevatedButton(
-            onPressed:incrementCount,
+            onPressed:(){},
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
             ),
@@ -42,12 +47,12 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
           SizedBox(height: 8),
           ElevatedButton(
-            onPressed: () {
-            },
+            onPressed: () {},
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
             ),
-            child: Text("${word[0]}",
+            child: Text(
+              "${word[0]}",
               style: TextStyle(color: Colors.white),
             ),
           ),
