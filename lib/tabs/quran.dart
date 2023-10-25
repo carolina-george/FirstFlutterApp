@@ -3,6 +3,7 @@ import 'package:firstflutterproject/sura_details.dart';
 import 'package:firstflutterproject/sura_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> SuraName = [
@@ -132,7 +133,8 @@ class QuranTab extends StatelessWidget {
             thickness: 2,
             color: MyThemeData.primary,
           ),
-          Text("اسم الصوره", style: Theme.of(context).textTheme.bodyLarge),
+          Text(AppLocalizations.of(context)!.suraName,
+              style: Theme.of(context).textTheme.bodyLarge),
           Divider(
             thickness: 2,
             color: MyThemeData.primary,
@@ -145,15 +147,16 @@ class QuranTab extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: (){
-                    Navigator.pushNamed(context, SuraDetails.RouteName,arguments: SuraModel(SuraName[index], index)
-                    );
-                  },
+                    onTap: () {
+                      Navigator.pushNamed(context, SuraDetails.RouteName,
+                          arguments: SuraModel(SuraName[index], index));
+                    },
                     child: Text(
-                  SuraName[index],
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 25),
-                ));
+                      SuraName[index],
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary),
+                    ));
               },
               itemCount: SuraName.length,
             ),
